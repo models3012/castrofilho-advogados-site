@@ -35,13 +35,29 @@ Depois abra http://localhost:8080 no navegador.
 
 ## Publicar no GitHub Pages com o domínio próprio
 
-1. Crie um repositório no GitHub e envie o conteúdo desta pasta (a pasta `_originais/` é opcional).
-2. No repositório, abra **Settings → Pages**, escolha **Deploy from a branch**, a branch `main` e a pasta `/ (root)`.
-3. Em **Custom domain**, informe `www.castrofilhoadvogados.com.br`. O arquivo `CNAME` com esse domínio já está na pasta. O site só passa a responder pelo domínio depois que o DNS for alterado (passo abaixo); até lá, o site atual no Wix continua no ar.
-4. No painel de DNS do domínio (Registro.br ou o provedor atual), retire os apontamentos do Wix e cadastre:
-   - Registros **A** do domínio raiz (`castrofilhoadvogados.com.br`): `185.199.108.153`, `185.199.109.153`, `185.199.110.153` e `185.199.111.153`
-   - Registro **CNAME** de `www` apontando para `<seu-usuario>.github.io`
-5. Quando o certificado ficar pronto, marque **Enforce HTTPS**.
+O site já está publicado no repositório https://github.com/models3012/castrofilho-advogados-site
+(GitHub Pages ativo na branch `main`, pasta raiz, domínio `www.castrofilhoadvogados.com.br`).
+Qualquer `git push` na branch `main` atualiza o site em cerca de um minuto.
+
+Falta só apontar o domínio. O DNS do domínio é administrado hoje **pelo Wix** (servidores `ns8.wixdns.net` e `ns9.wixdns.net`).
+No Wix, abra **Domínios → (o domínio) → Registros DNS** e altere:
+
+| Tipo  | Nome (host)                  | Valor                   |
+|-------|------------------------------|-------------------------|
+| CNAME | `www`                        | `models3012.github.io`  |
+| A     | `@` (castrofilhoadvogados.com.br) | `185.199.108.153` |
+| A     | `@`                          | `185.199.109.153`       |
+| A     | `@`                          | `185.199.110.153`       |
+| A     | `@`                          | `185.199.111.153`       |
+
+Apague os registros A antigos do domínio raiz que apontam para o Wix (`185.230.63.x`).
+
+> **Não mexa nos registros MX.** O e-mail `contato@castrofilhoadvogados.com.br` é atendido pela GoDaddy
+> (`smtp.secureserver.net` e `mailstore1.secureserver.net`). Se trocar os servidores DNS do domínio ou cancelar
+> o Wix, recrie esses registros MX no novo provedor antes, senão o e-mail para de funcionar.
+
+Depois que o DNS propagar (de minutos a algumas horas), abra **Settings → Pages** no repositório e marque **Enforce HTTPS**
+assim que o certificado estiver pronto.
 
 Os redirecionamentos (`/post/...`, `/mapa`) e a página 404 usam caminhos a partir da raiz do domínio. Por isso, funcionam corretamente no domínio próprio, mas não em um endereço do tipo `usuario.github.io/repositorio`.
 
