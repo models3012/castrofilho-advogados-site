@@ -36,8 +36,14 @@ Depois abra http://localhost:8080 no navegador.
 ## Publicar no GitHub Pages com o domínio próprio
 
 O site já está publicado no repositório https://github.com/models3012/castrofilho-advogados-site
-(GitHub Pages ativo na branch `main`, pasta raiz, domínio `www.castrofilhoadvogados.com.br`).
-Qualquer `git push` na branch `main` atualiza o site em cerca de um minuto.
+(GitHub Pages ativo na branch `main`, pasta raiz). Qualquer `git push` na branch `main` atualiza o site em cerca de um minuto.
+
+**Prévia:** por enquanto o domínio próprio foi retirado do GitHub Pages, para o site poder ser visto em
+https://models3012.github.io/castrofilho-advogados-site/ antes da troca do DNS.
+
+**Para colocar no domínio próprio:** primeiro altere o DNS (tabela abaixo). Depois, em **Settings → Pages → Custom domain**,
+informe `www.castrofilhoadvogados.com.br` e salve (o GitHub recria o arquivo `CNAME`). A partir daí, o endereço de prévia
+redireciona para o domínio.
 
 Falta só apontar o domínio. O DNS do domínio é administrado hoje **pelo Wix** (servidores `ns8.wixdns.net` e `ns9.wixdns.net`).
 No Wix, abra **Domínios → (o domínio) → Registros DNS** e altere:
