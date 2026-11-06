@@ -1,0 +1,5 @@
+.DS_Store
+Thumbs.db
+
+# Imagens originais em alta resolução (fonte das versões otimizadas em assets/img)
+_originais/
